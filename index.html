@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<title>Tabelle bauen</title>
+			</head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script>
+			"use strict";
+			function programm() {
+			// Quellcode
+
+			var vAnzahl;
+			var vAusgabe;
+			var vX;
+			var vY;
+			var vKV=4.50;
+			var vKF=12800;
+			var vPreis=6.00;
+			var vE, vG;
+
+			vX = 1000;
+
+			vAnzahl = document.getElementById("idAnzahl").value;
+
+			vAusgabe = "";
+			vAusgabe = vAusgabe + "<table border=1>";
+			vAusgabe = vAusgabe + "<tr><th>x</th><th>K(x) = k * x + F</th><th>Erlöse</td><th>Gewinn</th></tr>";
+
+			while (vX <=vAnzahl) {
+				
+				vY = vKV*vX + vKF ;
+				vE = vX* vPreis;
+				vG = vY-vE;
+				vAusgabe = vAusgabe + "<tr><td>" + vX + "</td><td>" + vY.toFixed(2) + " € " + "</td><td>" + vE.toFixed(2) + " € " + "</td><td>" + vG + " € " + "</td></tr>";
+
+			vX = vX + 1000;
+}
+			vAusgabe = vAusgabe + "</table>";
+
+			document.getElementById("divAusgabe").innerHTML = vAusgabe;
+		}
+
+		</script>
+
+
+	<body>
+		<h1>Kostenfunktion K(x) = k*x + F</h1> </br>
+        k = Variable Kosten pro Stück: 4,50 € </br>
+		x = Produktionsmenge: Variabel </br>
+		F = Fixkosten: 12.800 € </br>
+		Y= K(x) = Gesamtkosten: ? </br></br>
+		Produktionsmengen: <input id="idAnzahl" type="text" value="20">
+		<button onClick="programm();">Kostentabelle!</button><br /><br />
+        <div id="divAusgabe">Button klicken!</div>
+	</body>
+</html>
