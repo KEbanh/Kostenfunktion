@@ -23,13 +23,13 @@
 
 			vAusgabe = "";
 			vAusgabe = vAusgabe + "<table border=1>";
-			vAusgabe = vAusgabe + "<tr><th>x</th><th>K(x) = k * x + F</th><th>Erlöse</td><th>Gewinn</th></tr>";
+			vAusgabe = vAusgabe + "<tr><th>x</th><th>K(x) = k * x + F</th><th>Erlöse E (x) = p × x </td><th>Gewinn G(x) = E(x) — K(x).</th></tr>";
 
 			while (vX <=vAnzahl) {
 				
 				vY = vKV*vX + vKF ;
 				vE = vX* vPreis;
-				vG = vY-vE;
+				vG = vE-vY;
 				vAusgabe = vAusgabe + "<tr><td>" + vX + "</td><td>" + vY.toFixed(2) + " € " + "</td><td>" + vE.toFixed(2) + " € " + "</td><td>" + vG + " € " + "</td></tr>";
 
 			vX = vX + 1000;
