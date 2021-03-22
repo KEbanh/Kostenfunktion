@@ -14,7 +14,7 @@
 			var vY;
 			var vKV=4.50;
 			var vKF=12800;
-			var vPreis=6.00;
+			var vPreis;
 			var vE, vG;
 
 			vX = 1000;
@@ -30,9 +30,15 @@
 				
 				vY = vKV*vX + vKF ;
 				vE = vX* vPreis;
-				vG = vE-vY;
-				vAusgabe = vAusgabe + "<tr><td>" + vX + "</td><td>" + vY.toFixed(2) + " € " + "</td><td>" + vE.toFixed(2) + " € " + "</td><td>" + vG + " € " + "</td></tr>";
+                vG = vE-vY;
+                if (vG<0){
+				vAusgabe = vAusgabe + "<tr><td>" + vX + "</td><td>" + vY.toFixed(2) + " € " + "</td><td>" + vE.toFixed(2) + " € " + "</td><td style=color:red>" + vG + " € " + "</td></tr>";
+                }
+                else {
+                vAusgabe = vAusgabe + "<tr><td>" + vX + "</td><td>" + vY.toFixed(2) + " € " + "</td><td>" + vE.toFixed(2) + " € " + "</td><td>" + vG + " € " + "</td></tr>";
 
+
+                }
 			vX = vX + 1000;
 }
 			vAusgabe = vAusgabe + "</table>";
