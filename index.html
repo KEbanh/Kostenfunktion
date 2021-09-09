@@ -1,3 +1,4 @@
+ 
 <html>
 	<head>
 		<title>Tabelle bauen</title>
@@ -8,41 +9,46 @@
 			function programm() {
 			// Quellcode
 
-			var vAnzahl;
+			var vMenge;
 			var vAusgabe;
-			var vX;
+			var vStartMenge;
 			var vY;
 			var vKV=4.50;
 			var vKF=12800;
 			var vPreis;
 			var vE, vG;
 
-			vX = 1000;
+			vStartMenge = 0;
 
-			vAnzahl = document.getElementById("idAnzahl").value;
+			vMenge = document.getElementById("idMenge").value;
 			vPreis = document.getElementById("idPreis").value;
 
 			vAusgabe = "";
 			vAusgabe = vAusgabe + "<table border=1>";
-			vAusgabe = vAusgabe + "<tr><th>x</th><th>K(x) = k * x + F</th><th>Erlöse E (x) = p × x </td><th>Gewinn G(x) = E(x) — K(x).</th></tr>";
+			vAusgabe = vAusgabe + "<tr><th>Produktionsmenge</th><th>K(x) = k * x + F</th><th>Erlöse E (x) = p × x </td><th>Gewinn G(x) = E(x) — K(x).</th><th>Bemerkung</th></tr>";
 
-			while (vX <=vAnzahl) {
+			
+			while (vStartMenge<=vMenge) {
 				
-				vY = vKV*vX + vKF ;
-				vE = vX* vPreis;
+				vY = vKV*vStartMenge + vKF ;
+				vE = vStartMenge* vPreis;
                 vG = vE-vY;
+				
                 if (vG<0){
-				vAusgabe = vAusgabe + "<tr><td>" + vX + "</td><td>" + vY.toFixed(2) + " € " + "</td><td>" + vE.toFixed(2) + " € " + "</td><td style=color:red>" + vG + " € " + "</td></tr>";
+				vAusgabe = vAusgabe + "<tr><td>" + vStartMenge + "</td><td>" + vY.toFixed(2) + " € " + "</td><td>" + vE.toFixed(2) + " € " + "</td><td style=color:red>" + vG + " € " + "</td><td>Verlustzone</td></tr>";
                 }
                 else {
-                vAusgabe = vAusgabe + "<tr><td>" + vX + "</td><td>" + vY.toFixed(2) + " € " + "</td><td>" + vE.toFixed(2) + " € " + "</td><td>" + vG + " € " + "</td></tr>";
+                vAusgabe = vAusgabe + "<tr><td>" + vStartMenge + "</td><td>" + vY.toFixed(2) + " € " + "</td><td>" + vE.toFixed(2) + " € " + "</td><td>" + vG + " € " + "</td><td>Gewinnzone</td></tr>";
 
 
                 }
-			vX = vX + 1000;
+			vStartMenge = vStartMenge + 1000;
 }
 			vAusgabe = vAusgabe + "</table>";
-
+			
+			
+			
+			
 			document.getElementById("divAusgabe").innerHTML = vAusgabe;
 		}
 
@@ -55,9 +61,10 @@
 		x = Produktionsmenge: Variabel </br>
 		F = Fixkosten: 12.800 € </br>
 		K(x) = Gesamtkosten: ? </br></br>
-		Produktionsmengen: <input id="idAnzahl" type="text" value="20000">
+		Produktionsmengen: <input id="idMenge" type="text" value="20000">
 		Stückpreis: <input id="idPreis" type="text" value="6.00">
 		<button onClick="programm();">Kostentabelle!</button><br /><br />
         <div id="divAusgabe">Button klicken!</div>
 	</body>
 </html>
+© 2021 
